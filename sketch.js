@@ -1,3 +1,4 @@
+  
 var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
@@ -44,13 +45,14 @@ function setup() {
   
   ground = createSprite(200,180,400,20);
   ground.addImage("ground",groundImage);
-  ground.x = ground.width /2;
+  ground.x = ground.width/2;
   ground.velocityX = -(6 + 3*score/100);
+  ground.scale=1.5;
   
-  gameOver = createSprite(300,100);
+  gameOver = createSprite(camera.x,100);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(300,140);
+  restart = createSprite(camera.x,140);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
@@ -64,9 +66,11 @@ function setup() {
   
   cloudsGroup = new Group();
   obstaclesGroup = new Group();
+  
+  score = 0;
+  
   camera.position.x=trex.x
   camera.position.y=100
-  score = 0;
 }
 
 function draw() {
